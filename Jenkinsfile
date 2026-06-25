@@ -48,7 +48,7 @@ pipeline {
                         sh 'scp -o StrictHostKeyChecking=no "$ENV_FILE" ${APP_SERVER_HOST}:${DEPLOY_DIR}/.env'
                     }
                     sh '''
-                        ssh -o StrictHostKeyChecking=no ${APP_HOST} "
+                        ssh -o StrictHostKeyChecking=no ${APP_SERVER_HOST} "
                             cd ${DEPLOY_DIR} &&
                             ${COMPOSE} up --build -d &&
                             ${COMPOSE} ps
